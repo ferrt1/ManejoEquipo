@@ -43,12 +43,17 @@ public class EquipoTest {
         assertTrue(manejoEquipo.getRoles().contains(rol1));
     }
 
-    @Test
-    public void testAddIncompatibilidad() {
-        manejoEquipo.agregarIncompatibilidad(incompatibilidad);
-        assertEquals(1, manejoEquipo.getIncompatibilidades().size());
-        assertTrue(manejoEquipo.getIncompatibilidades().contains(incompatibilidad));
-    }
+ @Test
+ public void testAddIncompatibilidad() {
+     final ManejoEquipo manejoEquipo1;
+     final Incompatibilidad incompatibilidad1 = null;
+     
+     
+     manejoEquipo1 = new ManejoEquipo();
+     manejoEquipo1.agregarIncompatibilidad(incompatibilidad1);
+     assertEquals(1, manejoEquipo1.getIncompatibilidades().size());
+     assertTrue(manejoEquipo1.getIncompatibilidades().contains(incompatibilidad1));
+ }
     
     @Test
     public void testNoIncompatibilidadEntrePersonas() {
@@ -57,9 +62,17 @@ public class EquipoTest {
     
     @Test
     public void testAddRolMultipleTimes() {
-        manejoEquipo.agregarRol(rol1);
-        manejoEquipo.agregarRol(rol1);
-        assertEquals(2, manejoEquipo.getRoles().size());
+        final ManejoEquipo manejoEquipo2;
+      
+        
+        
+        manejoEquipo2 = new ManejoEquipo();
+        
+        
+        
+        manejoEquipo2.agregarRol(rol1);
+        manejoEquipo2.agregarRol(rol1);
+        assertEquals(2, manejoEquipo2.getRoles().size());
     }
     
     @Test
