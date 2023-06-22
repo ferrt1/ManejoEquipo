@@ -11,13 +11,13 @@ public class ManejoEquipo {
 	
     private List<Persona> personas;
     private List<Rol> roles;
-    private List<Incompatibilidad> incompatibilities;
+    private List<Incompatibilidad> incompatibilidades;
     
 
     public ManejoEquipo() {
         this.personas = new ArrayList<>();
         this.roles = new ArrayList<>();
-        this.incompatibilities = new ArrayList<>();
+        this.incompatibilidades = new ArrayList<>();
 
         
     }
@@ -34,7 +34,7 @@ public class ManejoEquipo {
 
     // Método para agregar una incompatibilidad
     public void agregarIncompatibilidad(Incompatibilidad incompatibilidad) {
-    	incompatibilities.add(incompatibilidad);
+    	incompatibilidades.add(incompatibilidad);
     }
 
     // Método para visualizar las personas
@@ -53,7 +53,7 @@ public class ManejoEquipo {
 
     // Método para visualizar las incompatibilidades
     public void mostrarIncompatibilidades() {
-        for (Incompatibilidad incompatibilidad : this.incompatibilities) {
+        for (Incompatibilidad incompatibilidad : this.incompatibilidades) {
             System.out.println("Incompatible: " + incompatibilidad.getPersona1().getNombre() + " y " +
             		incompatibilidad.getPersona2().getNombre());
         }
@@ -70,6 +70,6 @@ public class ManejoEquipo {
     }
 
     public List<Incompatibilidad> getIncompatibilidades() {
-        return incompatibilities;
+        return incompatibilidades;
     }
 }

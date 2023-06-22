@@ -366,7 +366,7 @@ public class Main {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         for (Persona persona : manejoEquipo.getPersonas()) {
-            JLabel labelPersona = new JLabel(persona.getNombre() + " - " + persona.getRol(), SwingConstants.CENTER);
+            JLabel labelPersona = new JLabel(persona.toString(), SwingConstants.CENTER);
             labelPersona.setOpaque(true);
             labelPersona.setBackground(colorBotones);  
             labelPersona.setForeground(Color.WHITE);

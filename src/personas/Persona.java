@@ -65,7 +65,7 @@ public class Persona {
 
 	@Override
 	public String toString() {
-		return nombre + ", Rol: " + rol + ", Rating: " + rating;
+		return nombre + " - " + rol + " - " + rating;
 	}
 
 	
