@@ -25,12 +25,13 @@ public class EquipoTest {
         manejoEquipo = new ManejoEquipo();
         persona2 = new Persona("Jane Smith", "Diseñador", 5);
         rol1 = new Rol("Programador", 2);
-        rol2 = new Rol("Dise単ador", 3);
+        rol2 = new Rol("Diseñador", 3);
         incompatibilidad = new Incompatibilidad(persona1, persona2);
 }
 
 	@Test
     public void testAddPersona() {
+		
 		manejoEquipo.agregarPersona(persona1);
         assertEquals(1, manejoEquipo.getPersonas().size());
         assertTrue(manejoEquipo.getPersonas().contains(persona1));
@@ -38,6 +39,7 @@ public class EquipoTest {
  
  @Test
     public void testAddRol() {
+	 	manejoEquipo = new ManejoEquipo();
         manejoEquipo.agregarRol(rol1);
         assertEquals(1, manejoEquipo.getRoles().size());
         assertTrue(manejoEquipo.getRoles().contains(rol1));
@@ -63,13 +65,7 @@ public class EquipoTest {
     @Test
     public void testAddRolMultipleTimes() {
         final ManejoEquipo manejoEquipo2;
-      
-        
-        
         manejoEquipo2 = new ManejoEquipo();
-        
-        
-        
         manejoEquipo2.agregarRol(rol1);
         manejoEquipo2.agregarRol(rol1);
         assertEquals(2, manejoEquipo2.getRoles().size());
@@ -87,11 +83,15 @@ public class EquipoTest {
 
 //     @Test
 //    public void testMostrarPersonas() {
-//        manejoEquipo.agregarPersona(persona1);
-//        manejoEquipo.agregarPersona(persona2);
+//    	 
+//    	  final ManejoEquipo manejoEquipo2;
+//          manejoEquipo2 = new ManejoEquipo();
+//    	 
+//        manejoEquipo2.agregarPersona(persona1);
+//        manejoEquipo2.agregarPersona(persona2);
 //        String expectedOutput = "Nombre: John Doe, Rol: Programador, Rating: 4\n" +
-//                                "Nombre: Jane Smith, Rol: Dise単ador, Rating: 5\n";
-//        assertEquals(expectedOutput, getConsoleOutput(manejoEquipo::mostrarPersonas));
+//                                "Nombre: Jane Smith, Rol: Diseñador, Rating: 5\n";
+//        assertEquals(expectedOutput, getConsoleOutput(manejoEquipo2::mostrarPersonas));
 //    }
 //
 //    @Test
@@ -99,7 +99,8 @@ public class EquipoTest {
 //        manejoEquipo.agregarRol(rol1);
 //        manejoEquipo.agregarRol(rol2);
 //        String expectedOutput = "Rol: Programador, Cantidad necesaria: 2\n" +
-//                                "Rol: Diseniador, Cantidad necesaria: 3\n";
+//                "Rol: Diseñador, Cantidad necesaria: 3";
+//
 //        assertEquals(expectedOutput, getConsoleOutput(manejoEquipo::mostrarRoles));
 //    }
 //    
