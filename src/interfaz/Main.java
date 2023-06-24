@@ -79,7 +79,7 @@ public class Main {
     }
     
     
-    private void inicializarPanelAgregarRol() {
+    private void inicializarPanelAgregarRol() {     
         limpiarFrame();
         crearCampoRol();
         crearCampoCantidadPersonas();
@@ -89,7 +89,12 @@ public class Main {
     }
 
     private void crearCampoRol() {
-        JLabel labelRol = new JLabel("Rol:");
+        JLabel titulo = new JLabel("Creacion de rol:");
+        titulo.setBounds(300, 2, 280, 50 );
+        titulo.setFont(fuente);
+        frame.getContentPane().add(titulo);
+        
+        JLabel labelRol = new JLabel("¿Qué rol deseas crear?:");
         labelRol.setBounds(138, 34, 190, 101);
         labelRol.setFont(fuente);
         frame.getContentPane().add(labelRol);
@@ -102,8 +107,8 @@ public class Main {
     }
 
     private void crearCampoCantidadPersonas() {
-        JLabel lblCantidadDePersonas = new JLabel("Cantidad de personas en Rol");
-        lblCantidadDePersonas.setBounds(96, 129, 232, 101);
+        JLabel lblCantidadDePersonas = new JLabel("Cantidad de personas en este rol: ");
+        lblCantidadDePersonas.setBounds(76, 129, 280, 101);
         lblCantidadDePersonas.setFont(fuente);
         frame.getContentPane().add(lblCantidadDePersonas);
 
@@ -211,7 +216,6 @@ public class Main {
     private void inicializarPanelIncompatibilidades() {
         limpiarFrame();
 
-        // Crear dos JComboBox con las personas
         cbIncompatibilidad1 = new JComboBox<>(manejoEquipo.getPersonas().toArray(new Persona[0]));
         cbIncompatibilidad2 = new JComboBox<>(manejoEquipo.getPersonas().toArray(new Persona[0]));
 
@@ -262,6 +266,7 @@ public class Main {
         if (persona1 != null && persona2 != null) {
             if (!persona1.equals(persona2)) {
                 manejoEquipo.agregarIncompatibilidad(new Incompatibilidad(persona1, persona2));
+            	JOptionPane.showMessageDialog(null, "¡Se agregó la incompatibilidad!");
             } else {
                 JOptionPane.showMessageDialog(frame, "Las personas deben ser diferentes", 
                         "Error", JOptionPane.ERROR_MESSAGE);
@@ -415,6 +420,10 @@ public class Main {
         int rating;
         try {
             rating = Integer.parseInt(txtRating.getText());
+            if(rating > 5 || rating < 0) {
+            	JOptionPane.showMessageDialog(frame, "Rating debe ser mayor a 0 o menor a 5");
+                return;
+            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(frame, "Rating debe ser un número");
             return;
@@ -422,10 +431,9 @@ public class Main {
         try {
             Persona persona = new Persona(nombre, rol, rating);
             manejoEquipo.agregarPersona(persona);
-            txtPersonas.append(persona.toString() + "\n");  // Muestra la persona en el campo de texto
+            txtPersonas.append(persona.toString() + "\n"); 
             cbIncompatibilidad1.addItem(persona);
             cbIncompatibilidad2.addItem(persona);
-            
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(frame, "La cantidad no es un numero valido");
             return;
@@ -440,6 +448,10 @@ public class Main {
         String cantidad = textFieldCantidad.getText();
         if(nuevoRol.isEmpty()) {
             JOptionPane.showMessageDialog(frame, "El rol no puede estar vacío");
+            return;
+        }
+        if(Integer.parseInt(cantidad) < 0) {
+            JOptionPane.showMessageDialog(frame, "La cantidad de personas necesaria debe ser mayor a 0");
             return;
         }
         try {

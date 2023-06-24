@@ -2,8 +2,6 @@ package equipoTest;
 
 import static org.junit.Assert.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -17,7 +15,6 @@ public class EquipoTest {
     private static ManejoEquipo manejoEquipo;
     private static Rol rol1;
     private static Rol rol2;
-    private static Incompatibilidad incompatibilidad;
     
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -26,7 +23,6 @@ public class EquipoTest {
         persona2 = new Persona("Jane Smith", "Diseñador", 5);
         rol1 = new Rol("Programador", 2);
         rol2 = new Rol("Diseñador", 3);
-        incompatibilidad = new Incompatibilidad(persona1, persona2);
 }
 
 	@Test
@@ -38,7 +34,7 @@ public class EquipoTest {
     }
  
  @Test
-    public void testAddRol() {
+    public void testAgregarRol() {
 	 	manejoEquipo = new ManejoEquipo();
         manejoEquipo.agregarRol(rol1);
         assertEquals(1, manejoEquipo.getRoles().size());
@@ -46,7 +42,7 @@ public class EquipoTest {
     }
 
  @Test
- public void testAddIncompatibilidad() {
+ public void testAgregarIncompatibilidad() {
      final ManejoEquipo manejoEquipo1;
      final Incompatibilidad incompatibilidad1 = null;
      
@@ -67,7 +63,7 @@ public class EquipoTest {
         final ManejoEquipo manejoEquipo2;
         manejoEquipo2 = new ManejoEquipo();
         manejoEquipo2.agregarRol(rol1);
-        manejoEquipo2.agregarRol(rol1);
+        manejoEquipo2.agregarRol(rol2);
         assertEquals(2, manejoEquipo2.getRoles().size());
     }
     
@@ -78,42 +74,6 @@ public class EquipoTest {
         manejoEquipo.agregarIncompatibilidad(incompatibilidad);
         assertEquals(2, manejoEquipo.getIncompatibilidades().size());
     }
-
-    
-
-//     @Test
-//    public void testMostrarPersonas() {
-//    	 
-//    	  final ManejoEquipo manejoEquipo2;
-//          manejoEquipo2 = new ManejoEquipo();
-//    	 
-//        manejoEquipo2.agregarPersona(persona1);
-//        manejoEquipo2.agregarPersona(persona2);
-//        String expectedOutput = "Nombre: John Doe, Rol: Programador, Rating: 4\n" +
-//                                "Nombre: Jane Smith, Rol: Diseñador, Rating: 5\n";
-//        assertEquals(expectedOutput, getConsoleOutput(manejoEquipo2::mostrarPersonas));
-//    }
-//
-//    @Test
-//    public void testMostrarRoles() {
-//        manejoEquipo.agregarRol(rol1);
-//        manejoEquipo.agregarRol(rol2);
-//        String expectedOutput = "Rol: Programador, Cantidad necesaria: 2\n" +
-//                "Rol: Diseñador, Cantidad necesaria: 3";
-//
-//        assertEquals(expectedOutput, getConsoleOutput(manejoEquipo::mostrarRoles));
-//    }
-//    
-//    private String getConsoleOutput(Runnable runnable) {
-//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//        PrintStream printStream = new PrintStream(outputStream);
-//        PrintStream originalPrintStream = System.out;
-//        System.setOut(printStream);
-//        runnable.run();
-//        System.out.flush();
-//        System.setOut(originalPrintStream);
-//        return outputStream.toString();
-//    }
 
 
 
