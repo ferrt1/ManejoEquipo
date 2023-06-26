@@ -260,19 +260,7 @@ public class Main {
         actualizarFrame();
     }
 
-    private void agregarIncompatibilidad() {
-        Persona persona1 = (Persona) cbIncompatibilidad1.getSelectedItem();
-        Persona persona2 = (Persona) cbIncompatibilidad2.getSelectedItem();
-        if (persona1 != null && persona2 != null) {
-            if (!persona1.equals(persona2)) {
-                manejoEquipo.agregarIncompatibilidad(new Incompatibilidad(persona1, persona2));
-            	JOptionPane.showMessageDialog(null, "¡Se agregó la incompatibilidad!");
-            } else {
-                JOptionPane.showMessageDialog(frame, "Las personas deben ser diferentes", 
-                        "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
+ 
     
 //    Mostrar Solucion
     
@@ -463,5 +451,19 @@ public class Main {
         txtNuevoRol.setText("");
         textFieldCantidad.setText("");
         cbRoles.addItem(nuevoRol);
+    }
+    
+    private void agregarIncompatibilidad() {
+        Persona persona1 = (Persona) cbIncompatibilidad1.getSelectedItem();
+        Persona persona2 = (Persona) cbIncompatibilidad2.getSelectedItem();
+        if (persona1 != null && persona2 != null) {
+            if (!persona1.equals(persona2)) {
+                manejoEquipo.agregarIncompatibilidad(new Incompatibilidad(persona1, persona2));
+            	JOptionPane.showMessageDialog(null, "¡Se agregó la incompatibilidad!");
+            } else {
+                JOptionPane.showMessageDialog(frame, "Las personas deben ser diferentes", 
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 }
