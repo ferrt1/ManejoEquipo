@@ -59,7 +59,7 @@ public class EquipoTest {
     }
     
     @Test
-    public void testAddRolMultipleTimes() {
+    public void testAddRolMultiplesVeces() {
         final ManejoEquipo manejoEquipo2;
         manejoEquipo2 = new ManejoEquipo();
         manejoEquipo2.agregarRol(rol1);
@@ -68,7 +68,7 @@ public class EquipoTest {
     }
     
     @Test
-    public void testAddIncompatibilidadMultipleTimes() {
+    public void testAddIncompatibilidadMultiplesVeces() {
         Incompatibilidad incompatibilidad = new Incompatibilidad(persona1, persona2);
         manejoEquipo.agregarIncompatibilidad(incompatibilidad);
         manejoEquipo.agregarIncompatibilidad(incompatibilidad);
